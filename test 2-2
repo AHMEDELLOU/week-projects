@@ -1,0 +1,4 @@
+def min_board_side(a, b, c):
+    total_area = a * b * c
+    min_side = math.ceil(math.sqrt(total_area))
+    return min_side
