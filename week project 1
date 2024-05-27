@@ -1,0 +1,21 @@
+class Solution:
+    # @param A : integer
+    # @return a list of integers
+    def primesum(self, A):
+        # Helper function to generate prime numbers up to n using Sieve of Eratosthenes
+        def sieve(n):
+            is_prime = [True] * (n + 1)
+            p = 2
+            while (p * p <= n):
+                if (is_prime[p] == True):
+                    for i in range(p * p, n + 1, p):
+                        is_prime[i] = False
+                p += 1
+            is_prime[0], is_prime[1] = False, False  # 0 and 1 are not primes
+            return is_prime
+        prime = sieve(A)
+        for i in range(2, A):
+            if prime[i] and prime[A - i]:
+                return [i, A - i]
+
+        return []
