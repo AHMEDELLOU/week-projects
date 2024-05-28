@@ -1,0 +1,48 @@
+import numpy as np
+#Create an array of 10 zeros
+zeros_array = np.zeros(10)
+print('1:',zeros_array)
+#Create an array of 10 fives
+fives_array = np.full(10, 5)
+print('2:', fives_array)
+#Create an array of the integers from 10 to 50
+tens_array = np.arange(10, 51)
+print('3:', tens_array)
+#Create an array of all the even integers from 10 to 50
+even_tens_array = np.arange(10, 51, 2)
+print('4:', even_tens_array)
+#Create a 3x3 matrix with values ranging from 0 to 8
+values = np.arange(9)
+matrix_3x3 = values.reshape(3, 3)
+print('5:',matrix_3x3)
+#Create a 3x3 identity matrix
+identity_matrix = np.identity(3)
+print('6:',identity_matrix)
+#Use NumPy to generate a random number between 0 and 1
+random_number = np.random.rand(1)
+print('7:',random_number)
+#Use NumPy to generate an array of 25 random numbers
+random_number_of_25 = np.random.rand(25)
+print('8:',random_number_of_25)
+#Create an array of 20 linearly spaced points between 0 and 1
+linear_points = np.linspace(0, 1, 20)
+print("9:",linear_points)
+#Convert a 1D array to a 2D array with 2 rows.
+arr_1d = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+arr_2d = arr_1d.reshape(2, -1)
+print('10:',arr_2d)
+#Multiply a 5x3 matrix by a 3x2 matrix.
+A = np.array([[1, 2, 3],[4, 5, 6],[7, 8, 9],[10, 11, 12]])
+B = np.array([[2, 0],[1, 2],[3, 1]])
+result = np.dot(A, B)
+print('11:')
+print("Matrix A:",A)
+print("\nMatrix B:",B)
+print("\nResulting matrix:",result)
+#Extract all odd numbers from an array of 1-10.
+odd_numbers = np.arange(1, 11, 2)
+print('12:', odd_numbers)
+#Replace all odd numbers in an array of 1-10 with -1.
+numbers = np.arange(1, 11)
+modified_numbers = np.where(numbers % 2 != 0, -1, numbers)
+print('13:',modified_numbers)
