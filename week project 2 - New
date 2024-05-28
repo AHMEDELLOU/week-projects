@@ -1,0 +1,22 @@
+class Solution:
+    def countKDifference(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        count = 0
+        value_dict = {}  
+
+        for num in nums:
+            if num + k in value_dict:
+                count += value_dict[num + k]
+      
+            if num - k in value_dict:
+                count += value_dict[num - k]
+            if num in value_dict:
+                value_dict[num] += 1
+            else:
+                value_dict[num] = 1
+        
+        return count
