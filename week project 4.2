@@ -1,0 +1,38 @@
+class MySet:
+    def _init_(self):
+        self.elements = []
+
+    def add(self, x):
+        if not self.contains(x):
+            i = 0
+            while i < len(self.elements) and self.elements[i] < x:
+                i += 1
+            self.elements.insert(i, x)
+
+    def remove(self, x):
+        i = 0
+        while i < len(self.elements) and self.elements[i] < x:
+            i += 1
+        if i < len(self.elements) and self.elements[i] == x:
+            self.elements.pop(i)
+
+    def contains(self, x):
+        i = 0
+        while i < len(self.elements) and self.elements[i] < x:
+            i += 1
+        return i < len(self.elements) and self.elements[i] == x
+my_set = MySet()
+
+while True:
+    user_input = input("Enter an element to add to the set (or 'exit' to quit): ")
+
+    if user_input.lower() == 'exit':
+        break
+
+    my_set.add(user_input)
+
+element_to_check = input("Enter an element to check if it's in the set: ")
+if my_set.contains(element_to_check):
+    print("",element_to_check," is in the set.")
+else:
+    print("",element_to_check," is not in")
