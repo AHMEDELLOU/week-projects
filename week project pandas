@@ -1,0 +1,52 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {'Date': ['2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04', '2023-05-05', '2023-05-06', '2023-05-07'],
+        'Subject': ['Math', 'English', 'Science', 'History', 'Geography', 'Physics', 'Chemistry'],
+        'Mark': [85, 92, 78, 90, 82, 88, 75]}
+
+exams = pd.DataFrame(data)
+exams['Date'] = pd.to_datetime(exams['Date'])
+
+print("Exams DataFrame:")
+print(exams)
+
+online_food = pd.read_csv('online_food.csv')
+
+online_food = online_food.drop(['Longitude', 'Latitude'], axis=1)
+
+print("Online Food DataFrame after dropping columns:")
+print(online_food)
+
+min_age = online_food['Age'].min()
+max_age = online_food['Age'].max()
+
+print(f"Minimal age: {min_age}")
+print(f"Maximal age: {max_age}")
+
+occupation_mean_age = online_food.groupby('Occupation')['Age'].mean()
+print("\nMean age by Occupation:")
+print(occupation_mean_age)
+
+gender_income_mean_family = online_food.groupby(['Gender', 'Monthly Income'])['Family Size'].mean()
+print("\nMean family size by Gender and Monthly Income:")
+print(gender_income_mean_family)
+marital_education_positive_feedback = online_food.groupby(['Marital Status', 'Education Qualifications'])['Positive Feedback'].count()
+print("\nPositive feedback count by Marital Status and Education Qualifications:")
+print(marital_education_positive_feedback)
+online_food['Big family'] = online_food['Family Size'] > 4
+online_food.groupby('Education Qualifications')['Age'].mean().plot(kind='hist')
+plt.title('Mean age by Education Qualifications')
+plt.xlabel('Education Qualifications')
+plt.ylabel('Mean Age')
+plt.show()
+online_food.groupby('Gender')[['Positive Feedback', 'Negative Feedback']].sum().plot(kind='bar')
+plt.title('Positive and Negative feedbacks by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Feedback Count')
+plt.show()
+online_food.plot(x='Family Size', y='Positive Feedback', kind='line')
+plt.title('Positive feedbacks vs Family Size')
+plt.xlabel('Family Size')
+plt.ylabel('Positive Feedback')
+plt.show()
