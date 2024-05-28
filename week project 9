@@ -1,0 +1,17 @@
+def minElementsToFlipSign(self, A):
+        total_sum = sum(A)
+        n = len(A)
+        target = total_sum // 2
+
+        dp = [False] * (target + 1)
+        dp[0] = True
+
+        for num in A:
+            for j in range(target, num - 1, -1):
+                dp[j] = dp[j] or dp[j - num]
+
+        for k in range(target, -1, -1):
+            if dp[k]:
+                return total_sum - 2 * k
+
+
