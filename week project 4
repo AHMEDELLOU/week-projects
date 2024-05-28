@@ -1,0 +1,20 @@
+class Solution:
+	# @param A : list of integers
+	# @param B : integer
+	# @return an integer
+	def threeSumClosest(self, A, B):
+        A.sort()
+        closest_sum = A[0] + A[1] + A[2]
+        for i in range(len(A) - 2):
+            left, right = i + 1, len(A) - 1
+            while left < right:
+                current_sum = A[i] + A[left] + A[right]
+                if current_sum == B:
+                    return B
+                if abs(current_sum - B) < abs(closest_sum - B):
+                    closest_sum = current_sum
+                if current_sum < B:
+                    left += 1
+                else:
+                    right -= 1
+        return closest_sum
