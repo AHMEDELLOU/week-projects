@@ -1,0 +1,19 @@
+class Solution:
+    def factorial(self, n):
+        if n == 0:
+            return 1
+        return n * self.factorial(n - 1)
+
+    def count_permutations(self, n, k):
+        try:
+            beautiful_points = self.factorial(n - k) // 2 *self.factorial(k)
+            total_permutations = self.factorial(n)
+            return total_permutations // beautiful_points
+        except ZeroDivisionError and RecursionError as e:
+            return 0
+
+input_list = list(map(int, input("Enter the values of n and k separated by ',': ").split(',')))
+sol = Solution()
+result = sol.count_permutations(input_list[0], input_list[1])
+print('The result is: ',result)
+print("i guess there are same errors in the code")
